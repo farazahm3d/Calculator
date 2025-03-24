@@ -1,0 +1,122 @@
+#root {
+  /* max-width: 1280px; */
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+button {
+  /* padding: 2em; */
+  border: pink solid 2px;
+}
+
+.output {
+  border: pink solid 2px;
+  height: 50px;
+  border-radius: 3px;
+  width: 250px;
+  /* margin-left: 22.5px; */
+
+
+}
+
+input {
+  border: none;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+.backspace {
+  width: 200px;
+}
+
+.keyboard {
+  display: flex;
+  flex-direction: row;
+  height: 220px;
+}
+
+.decimalpoint {
+  height: 100%;
+}
+
+button {
+  width: 50px;
+  cursor: pointer;
+}
+
+.btn.active {
+  background: #d80972;
+  box-shadow: 0 2px 25px rgba(255, 0, 130, 0.5);
+}
+
+
+.btnspace {
+  width: 200px;
+}
+
+.btnspace.active {
+  background: #d80972;
+  box-shadow: 0 2px 25px rgba(255, 0, 130, 0.5);
+  width: 200px;
+}
+
+.memory {
+  height: 100%;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  /* Keeps letters upright */
+  padding: 10px;
+  font-size: 20px;
+
+
+}
+
+.clear {
+  height: 100%;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  /* Keeps letters upright */
+  padding: 10px;
+  font-size: 20px;
+
+
+}
+
+.history {
+  border: #d80972 solid;
+  white-space: normal;
+}
