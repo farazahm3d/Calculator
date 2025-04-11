@@ -13,7 +13,7 @@
 }
 
 .logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+  filter: drop-shadow(0 0 2em #F3F3F3);
 }
 
 .logo.react:hover {
@@ -38,22 +38,42 @@
 
 button {
   /* padding: 2em; */
-  border: pink solid 2px;
+  border: #E5E5E5 solid 2px;
+  margin: 1px;
+
 }
 
-.output {
-  border: pink solid 2px;
+.input2 {
+  border: none;
+  font-size: 3em;
   height: 50px;
   border-radius: 3px;
-  width: 250px;
+  width: 320px;
+  text-align: right;
+  background-color: #F3F3F3;
   /* margin-left: 22.5px; */
 
 
 }
 
-input {
+.input3 {
   border: none;
+  font-size: 1em;
+  height: 50px;
+  border-radius: 3px;
+  width: 320px;
+  text-align: right;
+  background-color: #F3F3F3;
+  box-sizing: border-box;
+  padding-right: 10px;
+  color: #9D9D9D;
+  /* margin-left: 22.5px; */
 }
+
+.output {
+  text-align: left;
+}
+
 
 .read-the-docs {
   color: #888;
@@ -74,12 +94,27 @@ input {
 }
 
 button {
-  width: 50px;
+  width: 80px;
+  height: 60px;
   cursor: pointer;
+  text-align: center;
+}
+
+.noborder {
+  font-size: small;
+  width: 64px;
+  border: none;
+  background-color: #F3F3F3;
+  height: 40px;
+
+}
+
+.memorybuttons {
+  display: inline-block
 }
 
 .btn.active {
-  background: #d80972;
+  background: #F9F9F9;
   box-shadow: 0 2px 25px rgba(255, 0, 130, 0.5);
 }
 
@@ -89,20 +124,30 @@ button {
 }
 
 .btnspace.active {
-  background: #d80972;
+  background: #F9F9F9;
   box-shadow: 0 2px 25px rgba(255, 0, 130, 0.5);
   width: 200px;
 }
 
 .memory {
-  height: 100%;
-  writing-mode: vertical-rl;
+  /* height: 100%; */
+  /* writing-mode: vertical-rl; */
   text-orientation: upright;
   /* Keeps letters upright */
-  padding: 10px;
+  /* padding: 10px; */
   font-size: 20px;
+  width: 300px;
+  height: 425px;
+  overflow-y: auto;
 
 
+}
+
+li:nth-child(odd) {
+  font-weight: 600;
+  font-size: 1.5em;
+  color: black;
+  margin-bottom: 40px;
 }
 
 .clear {
@@ -116,7 +161,199 @@ button {
 
 }
 
+
 .history {
-  border: #d80972 solid;
+  border: none;
+  background-color: #F3F3F3;
   white-space: normal;
+  text-align: right;
+  width: 300px;
+  height: 425px;
+}
+
+.historydiv {
+  border: none;
+}
+
+img {
+  width: 10px;
+  height: 10px;
+}
+
+.holder {
+  display: flex;
+  flex-direction: row;
+
+}
+
+.heading {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+}
+
+.border {
+  display: inline-block;
+  /* Ensures the width of the heading is respected */
+  position: relative;
+  cursor: pointer;
+  text-align: center;
+  padding-bottom: 10px;
+  /* Space between text and underline */
+}
+
+.border::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 30%;
+  /* Makes the underline half the width of the heading */
+  height: 3px;
+  /* Thickness of the underline */
+  border-radius: 3px;
+  background-color: #005A9E;
+  transform: translateX(-50%);
+  transition: opacity 0.3s ease;
+  /* Smooth fade-out effect */
+  /* Centers the underline */
+}
+
+.noborder:hover {
+  background-color: #E5E5E5;
+}
+
+
+.tooltip-text {
+  font-size: small;
+  visibility: hidden;
+  background-color: white;
+  color: black;
+  text-align: center;
+  padding: 5px;
+  border-radius: 5px;
+
+  position: relative;
+  bottom: 150%;
+  right: 100%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 10;
+  display: none;
+}
+
+.noborder:hover .tooltip-text {
+  visibility: visible;
+  display: inline-flex;
+  opacity: 1;
+}
+
+
+
+
+ul {
+  list-style: none;
+  text-align: right;
+}
+
+.historylist {
+  width: 300px;
+  max-height: 425px;
+  overflow-y: auto;
+  padding-right: 10px;
+  font-size: 15px;
+  color: #616161;
+}
+
+
+
+/* .border1 {
+  border-bottom: 3px solid black;
+  padding-bottom: 5px;
+  display: inline-block;
+  width: 20px;
+
+}
+
+.border2 {
+  border-bottom: 3px solid black;
+  padding-bottom: 5px;
+  margin-left: 200px;
+  display: inline-block;
+  width: 20px;
+
+
+} */
+
+/* For WebKit browsers (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+  width: 2.5px;
+  /* Width of the vertical scrollbar */
+  height: 10px;
+  background-color: white;
+  /* Height of the horizontal scrollbar */
+}
+
+::-webkit-scrollbar:hover {
+  width: 10px;
+  /* Width of the vertical scrollbar */
+  background-color: #868686;
+  /* Height of the horizontal scrollbar */
+}
+
+/* Scrollbar Track (background) */
+::-webkit-scrollbar-track {
+  background: white;
+  /* Light gray */
+  border-radius: 2.5px;
+}
+
+/* Scrollbar Thumb (movable part) */
+::-webkit-scrollbar-thumb {
+  background: #868686;
+  /* Darker gray */
+  border-radius: 10px;
+  width: 10px !important;
+}
+
+/* Scrollbar Thumb on Hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #868686;
+  width: 10px;
+  /* Even darker */
+}
+
+/* Scrollbar arrows (top and bottom buttons) */
+::-webkit-scrollbar-button {
+  background: white;
+  /* Color of the arrows */
+  height: 10px;
+  /* Height of the buttons */
+  width: 10px;
+}
+
+:hover::-webkit-scrollbar {
+  width: 7.5px;
+  /* Wider scrollbar when hovered */
+}
+
+:hover::-webkit-scrollbar-button:single-button:increment {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="grey"><path d="M7 10l5 5 5-5z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 20px;
+}
+
+:hover::-webkit-scrollbar-button:single-button:decrement {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="grey"><path d="M7 14l5-5 5 5z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 20px;
+}
+
+input::placeholder {
+  color: black;
 }
