@@ -1,6 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 import Big from "big.js";
 import "./App.css";
+import "./MemoryTooltip.jsx";
+import "./MemoryButton.jsx";
+import TextButtons from "./MemoryButton.jsx";
+import NonInteractiveTooltips from "./MemoryTooltip.jsx";
 import { useSelector, useDispatch } from "react-redux";
 import { updateValue } from "./store/valueSlice";
 import { appendText } from "./store/valueSlice";
@@ -9,8 +13,11 @@ import { appendMemoryminus } from "./store/valueSlice";
 import { appendMemorysupply } from "./store/valueSlice";
 import { deleteMemory } from "./store/valueSlice";
 import { resetHistory } from "./store/valueSlice";
+import "./Inputbox.jsx";
+import FullWidthTextField from "./Inputbox.jsx";
 
 function Home() {
+  let secondoutput = "";
   const prevOutputRef = useRef("");
   const [isCalculated, setIsCalculated] = useState(false);
 
@@ -183,6 +190,8 @@ function Home() {
 
   useEffect(() => {
     if (isCalculated) {
+      secondoutput = "1656";
+      console.log("secondoutput printed");
       handleUpdate(output); // Now handleUpdate() gets the correct output
       setIsCalculated(false); // Reset flag
     }
@@ -297,7 +306,7 @@ function Home() {
         <div className="holder">
           <div>
             <div className="secondaryoutput">
-              <input className="input3" type="text" />
+              <input className="input3" type="text" value="secondoutput" />
             </div>
             <div className="output" placeholder="calculate">
               <input
@@ -308,167 +317,637 @@ function Home() {
               />
             </div>
             <div className="keyboard">
-              <div>
-                <div className="memorybuttons">
-                  <button className="noborder" onClick={handleMemoryclear}>
+              <div className="card">
+                {/* <button className="noborder" onClick={handleMemoryclear}>
                     MC
                     <span class="tooltip-text">Clear all memory (Ctrl+L)</span>
-                  </button>
-                  <button className="noborder" onClick={handleUpdate}>
+                  </button> */}
+                <NonInteractiveTooltips title="memory added">
+                  <TextButtons
+                    sx={{
+                      backgroundColor: "#F3F3F3",
+                      color: "text.primary",
+                      fontWeight: "light",
+                      fontSize: 13,
+                      fontWeight: 450,
+                      boxShadow: "none",
+                      width: 40,
+                      height: 40,
+                      "&:hover": {
+                        backgroundColor: "#E6E6E6",
+                      },
+                    }}
+                    onClick={handleMemoryclear}
+                    label="MC"
+                  />
+                </NonInteractiveTooltips>
+                {/* <button className="noborder" onClick={handleUpdate}>
                     MR
                     <span class="tooltip-text">Memory Recall (Ctrl+R)</span>
-                  </button>
-                  <button className="noborder" onClick={handleMemory}>
-                    M+
-                    <span class="tooltip-text">Memory add (Ctrl+P)</span>
-                  </button>
-                  <button className="noborder" onClick={handleMemoryminus}>
+                  </button> */}
+                <NonInteractiveTooltips title="memory added">
+                  <TextButtons
+                    sx={{
+                      backgroundColor: "#F3F3F3",
+                      color: "text.primary",
+                      fontWeight: "light",
+                      fontSize: 13,
+                      fontWeight: 450,
+                      boxShadow: "none",
+                      height: 40,
+                      "&:hover": {
+                        backgroundColor: "#E6E6E6",
+                      },
+                    }}
+                    onClick={handleUpdate}
+                    label="MR"
+                  />
+                </NonInteractiveTooltips>
+                <NonInteractiveTooltips title="memory added">
+                  <TextButtons
+                    sx={{
+                      backgroundColor: "#F3F3F3",
+                      color: "text.primary",
+                      fontWeight: "light",
+                      fontSize: 13,
+                      fontWeight: 450,
+                      boxShadow: "none",
+                      height: 40,
+                      "&:hover": {
+                        backgroundColor: "#E6E6E6",
+                      },
+                    }}
+                    onClick={handleMemory}
+                    label="M+"
+                  />
+                </NonInteractiveTooltips>
+
+                {/* <button className="noborder" onClick={handleMemoryminus}>
                     M-
                     <span class="tooltip-text">Memory subtract (Ctrl+Q)</span>
-                  </button>
-                  <button className="noborder" onClick={handleMemorysupply}>
+                  </button> */}
+                <NonInteractiveTooltips title="memory added">
+                  <TextButtons
+                    sx={{
+                      backgroundColor: "#F3F3F3",
+                      color: "text.primary",
+                      fontWeight: "light",
+                      fontSize: 13,
+                      fontWeight: 450,
+                      boxShadow: "none",
+                      height: 40,
+                      "&:hover": {
+                        backgroundColor: "#E6E6E6",
+                      },
+                    }}
+                    onClick={handleMemoryminus}
+                    label="M-"
+                  />
+                </NonInteractiveTooltips>
+                {/* <button className="noborder" onClick={handleMemorysupply}>
                     MS
                     <span class="tooltip-text">Memory store (Ctrl+M)</span>
-                  </button>
-                </div>
-                <div className="card">
-                  <button>%</button>
-                  <button>CE</button>
-                  <button
+                  </button> */}
+                <NonInteractiveTooltips title="memory added">
+                  <TextButtons
+                    sx={{
+                      backgroundColor: "#F3F3F3",
+                      color: "text.primary",
+                      fontWeight: "light",
+                      fontSize: 13,
+                      fontWeight: 450,
+                      boxShadow: "none",
+                      height: 40,
+                      "&:hover": {
+                        backgroundColor: "#E6E6E6",
+                      },
+                    }}
+                    onClick={handleMemorysupply}
+                    label="MS"
+                  />
+                </NonInteractiveTooltips>
+              </div>
+              <div className="card">
+                <TextButtons
+                  sx={{
+                    backgroundColor: "#F9F9F9",
+                    color: "#1B1B1B",
+                    fontWeight: "light",
+                    fontSize: 13,
+                    fontWeight: 450,
+                    boxShadow: "none",
+                    border: "2px solid #E6E6E6",
+                    "&:hover": {
+                      backgroundColor: "#E6E6E6",
+                    },
+                  }}
+                  label="%"
+                />
+                {/* <button>%</button> */}
+                <TextButtons
+                  sx={{
+                    backgroundColor: "#F9F9F9",
+                    color: "#1B1B1B",
+                    fontWeight: "light",
+                    fontSize: 13,
+                    fontWeight: 450,
+                    boxShadow: "none",
+                    border: "2px solid #E6E6E6",
+                    "&:hover": {
+                      backgroundColor: "#E6E6E6",
+                    },
+                  }}
+                  label="CE"
+                />
+                {/* <button>CE</button> */}
+                <TextButtons
+                  sx={{
+                    backgroundColor: "#F9F9F9",
+                    color: "#1B1B1B",
+                    fontWeight: "light",
+                    fontSize: 13,
+                    fontWeight: 450,
+                    boxShadow: "none",
+                    border: "2px solid #E6E6E6",
+                    "&:hover": {
+                      backgroundColor: "#E6E6E6",
+                    },
+                  }}
+                  onClick={() => handleclick("Reset")}
+                  label="C"
+                />
+                {/* <button
                     value="Reset"
                     className={`btn ${isPressedC ? "active" : ""}`}
                     onClick={() => handleclick("Reset")}
                   >
                     C
-                  </button>
-                  <button
+                  </button> */}
+                <TextButtons
+                  sx={{
+                    backgroundColor: "#F9F9F9",
+                    color: "#1B1B1B",
+                    fontWeight: "light",
+                    fontSize: 13,
+                    fontWeight: 450,
+                    boxShadow: "none",
+                    border: "2px solid #E6E6E6",
+                    "&:hover": {
+                      backgroundColor: "#E6E6E6",
+                    },
+                  }}
+                  onClick={() => handleclick("Reset")}
+                  label="BSP"
+                />
+
+                {/* <button
                     value="Backspace"
                     className={`btn ${isPressed ? "active" : ""}`}
                     onClick={() => handleclick("Backspace")}
                   >
                     BSP
-                  </button>
-                </div>
-                <div>
-                  <button onClick={() => handleclick("Reciprocal")}>1/x</button>
-                  <button
+                  </button> */}
+              </div>
+              <div className="card">
+                <TextButtons
+                  sx={{
+                    backgroundColor: "#F9F9F9",
+                    color: "#1B1B1B",
+                    fontWeight: "light",
+                    fontSize: 13,
+                    fontWeight: 450,
+                    boxShadow: "none",
+                    border: "2px solid #E6E6E6",
+                    "&:hover": {
+                      backgroundColor: "#E6E6E6",
+                    },
+                  }}
+                  onClick={() => handleclick("Reciprocal")}
+                  label="1/x"
+                />
+                {/* <button onClick={() => handleclick("Reciprocal")}>1/x</button> */}
+                <TextButtons
+                  sx={{
+                    backgroundColor: "#F9F9F9",
+                    color: "#1B1B1B",
+                    fontWeight: "light",
+                    fontSize: 13,
+                    fontWeight: 450,
+                    boxShadow: "none",
+                    border: "2px solid #E6E6E6",
+                    "&:hover": {
+                      backgroundColor: "#E6E6E6",
+                    },
+                  }}
+                  onClick={() => handleclick("Square")}
+                  label="x^2"
+                />
+                {/* <button
                     value="Square"
                     className={`btn ${isPressedSQR ? "active" : ""}`}
                     onClick={() => handleclick("Square")}
                   >
                     x^2
-                  </button>
-                  <button
+                  </button> */}
+                <TextButtons
+                  sx={{
+                    backgroundColor: "#F9F9F9",
+                    color: "#1B1B1B",
+                    fontWeight: "light",
+                    fontSize: 13,
+                    fontWeight: 450,
+                    boxShadow: "none",
+                    border: "2px solid #E6E6E6",
+                    "&:hover": {
+                      backgroundColor: "#E6E6E6",
+                    },
+                  }}
+                  onClick={() => handleclick("Squareroot")}
+                  label="sqrt(x)"
+                />
+                {/* <button
                     className={`btn ${isPressedSQRT ? "active" : ""}`}
                     onClick={() => handleclick("Squareroot")}
                   >
                     sqrt(x)
-                  </button>
-                  <button
+                  </button> */}
+                <TextButtons
+                  sx={{
+                    backgroundColor: "#F9F9F9",
+                    color: "#1B1B1B",
+                    fontWeight: "light",
+                    fontSize: 13,
+                    fontWeight: 450,
+                    boxShadow: "none",
+                    border: "2px solid #E6E6E6",
+                    "&:hover": {
+                      backgroundColor: "#E6E6E6",
+                    },
+                  }}
+                  onClick={() => handleclick("/")}
+                  label="÷"
+                />
+                {/* <button
                     className={`btn ${isPressedDivide ? "active" : ""}`}
                     onClick={() => handleclick("/")}
                   >
                     ÷
-                  </button>
-                </div>
-                <div className="card">
-                  <button
+                  </button> */}
+              </div>
+              <div className="card">
+                <TextButtons
+                  sx={{
+                    backgroundColor: "#F9F9F9",
+                    color: "#1B1B1B",
+                    fontWeight: "light",
+                    fontSize: 13,
+                    fontWeight: 450,
+                    boxShadow: "none",
+                    border: "2px solid #E6E6E6",
+                    "&:hover": {
+                      backgroundColor: "#E6E6E6",
+                    },
+                  }}
+                  onClick={() => handleclick("7")}
+                  label="7"
+                />
+                {/* <button
                     value="7"
                     className={`btn ${isPressed7 ? "active" : ""}`}
                     onClick={() => handleclick("7")}
                   >
                     7
-                  </button>
-                  <button
+                  </button> */}
+                <TextButtons
+                  sx={{
+                    backgroundColor: "#F9F9F9",
+                    color: "#1B1B1B",
+                    fontWeight: "light",
+                    fontSize: 13,
+                    fontWeight: 450,
+                    boxShadow: "none",
+                    border: "2px solid #E6E6E6",
+                    "&:hover": {
+                      backgroundColor: "#E6E6E6",
+                    },
+                  }}
+                  onClick={() => handleclick("8")}
+                  label="8"
+                />
+                {/* <button
                     className={`btn ${isPressed8 ? "active" : ""}`}
                     onClick={() => handleclick("8")}
                   >
                     8
-                  </button>
-                  <button
+                  </button> */}
+                <TextButtons
+                  sx={{
+                    backgroundColor: "#F9F9F9",
+                    color: "#1B1B1B",
+                    fontWeight: "light",
+                    fontSize: 13,
+                    fontWeight: 450,
+                    boxShadow: "none",
+                    border: "2px solid #E6E6E6",
+                    "&:hover": {
+                      backgroundColor: "#E6E6E6",
+                    },
+                  }}
+                  onClick={() => handleclick("9")}
+                  label="9"
+                />
+                {/* <button
                     className={`btn ${isPressed9 ? "active" : ""}`}
                     onClick={() => handleclick("9")}
                   >
                     9
-                  </button>
-                  <button
+                  </button> */}
+                <TextButtons
+                  sx={{
+                    backgroundColor: "#F9F9F9",
+                    color: "#1B1B1B",
+                    fontWeight: "light",
+                    fontSize: 13,
+                    fontWeight: 450,
+                    boxShadow: "none",
+                    border: "2px solid #E6E6E6",
+                    "&:hover": {
+                      backgroundColor: "#E6E6E6",
+                    },
+                  }}
+                  onClick={() => handleclick("*")}
+                  label="x"
+                />
+                {/* <button
                     className={`btn ${isPressedMultiply ? "active" : ""}`}
                     onClick={() => handleclick("*")}
                   >
                     x
-                  </button>
-                </div>
-                <div className="card">
-                  <button
+                  </button> */}
+              </div>
+              <div className="card">
+                <TextButtons
+                  sx={{
+                    backgroundColor: "#F9F9F9",
+                    color: "#1B1B1B",
+                    fontWeight: "light",
+                    fontSize: 13,
+                    fontWeight: 450,
+                    boxShadow: "none",
+                    border: "2px solid #E6E6E6",
+                    "&:hover": {
+                      backgroundColor: "#E6E6E6",
+                    },
+                  }}
+                  onClick={() => handleclick("4")}
+                  label="4"
+                />
+                {/* <button
                     value="4"
                     className={`btn ${isPressed4 ? "active" : ""}`}
                     onClick={() => handleclick("4")}
                   >
                     4
-                  </button>
-                  <button
+                  </button> */}
+                <TextButtons
+                  sx={{
+                    backgroundColor: "#F9F9F9",
+                    color: "#1B1B1B",
+                    fontWeight: "light",
+                    fontSize: 13,
+                    fontWeight: 450,
+                    boxShadow: "none",
+                    border: "2px solid #E6E6E6",
+                    "&:hover": {
+                      backgroundColor: "#E6E6E6",
+                    },
+                  }}
+                  onClick={() => handleclick("5")}
+                  label="5"
+                />
+                {/* <button
                     className={`btn ${isPressed5 ? "active" : ""}`}
                     onClick={() => handleclick("5")}
                   >
                     5
-                  </button>
-                  <button
+                  </button> */}
+                <TextButtons
+                  sx={{
+                    backgroundColor: "#F9F9F9",
+                    color: "#1B1B1B",
+                    fontWeight: "light",
+                    fontSize: 13,
+                    fontWeight: 450,
+                    boxShadow: "none",
+                    border: "2px solid #E6E6E6",
+                    "&:hover": {
+                      backgroundColor: "#E6E6E6",
+                    },
+                  }}
+                  onClick={() => handleclick("6")}
+                  label="6"
+                />
+                {/* <button
                     className={`btn ${isPressed6 ? "active" : ""}`}
                     onClick={() => handleclick("6")}
                   >
                     6
-                  </button>
-                  <button
+                  </button> */}
+                <TextButtons
+                  sx={{
+                    backgroundColor: "#F9F9F9",
+                    color: "#1B1B1B",
+                    fontWeight: "light",
+                    fontSize: 13,
+                    fontWeight: 450,
+                    boxShadow: "none",
+                    border: "2px solid #E6E6E6",
+                    "&:hover": {
+                      backgroundColor: "#E6E6E6",
+                    },
+                  }}
+                  onClick={() => handleclick("-")}
+                  label="-"
+                />
+                {/* <button
                     className={`btn ${isPressedMinus ? "active" : ""}`}
                     onClick={() => handleclick("-")}
                   >
                     -
-                  </button>
-                </div>
-                <div className="card">
-                  <button
+                  </button> */}
+              </div>
+              <div className="card">
+                <TextButtons
+                  sx={{
+                    backgroundColor: "#F9F9F9",
+                    color: "#1B1B1B",
+                    fontWeight: "light",
+                    fontSize: 13,
+                    fontWeight: 450,
+                    boxShadow: "none",
+                    border: "2px solid #E6E6E6",
+                    "&:hover": {
+                      backgroundColor: "#E6E6E6",
+                    },
+                  }}
+                  onClick={() => handleclick("1")}
+                  label="1"
+                />
+                {/* <button
                     value="1"
                     className={`btn ${isPressed1 ? "active" : ""}`}
                     onClick={() => handleclick("1")}
                   >
                     1
-                  </button>
-                  <button
+                  </button> */}
+                <TextButtons
+                  sx={{
+                    backgroundColor: "#F9F9F9",
+                    color: "#1B1B1B",
+                    fontWeight: "light",
+                    fontSize: 13,
+                    fontWeight: 450,
+                    boxShadow: "none",
+                    border: "2px solid #E6E6E6",
+                    "&:hover": {
+                      backgroundColor: "#E6E6E6",
+                    },
+                  }}
+                  onClick={() => handleclick("2")}
+                  label="2"
+                />
+                {/* <button
                     className={`btn ${isPressed2 ? "active" : ""}`}
                     onClick={() => handleclick("2")}
                   >
                     2
-                  </button>
-                  <button
+                  </button> */}
+                <TextButtons
+                  sx={{
+                    backgroundColor: "#F9F9F9",
+                    color: "#1B1B1B",
+                    fontWeight: "light",
+                    fontSize: 13,
+                    fontWeight: 450,
+                    boxShadow: "none",
+                    border: "2px solid #E6E6E6",
+                    "&:hover": {
+                      backgroundColor: "#E6E6E6",
+                    },
+                  }}
+                  onClick={() => handleclick("3")}
+                  label="3"
+                />
+                {/* <button
                     className={`btn ${isPressed3 ? "active" : ""}`}
                     onClick={() => handleclick("3")}
                   >
                     3
-                  </button>
-                  <button
+                  </button> */}
+                <TextButtons
+                  sx={{
+                    backgroundColor: "#F9F9F9",
+                    color: "#1B1B1B",
+                    fontWeight: "light",
+                    fontSize: 13,
+                    fontWeight: 450,
+                    boxShadow: "none",
+                    border: "2px solid #E6E6E6",
+                    "&:hover": {
+                      backgroundColor: "#E6E6E6",
+                    },
+                  }}
+                  onClick={() => handleclick("+")}
+                  label="+"
+                />
+                {/* <button
                     className={`btn ${isPressedPlus ? "active" : ""}`}
                     onClick={() => handleclick("+")}
                   >
                     +
-                  </button>
-                </div>
-                <div></div>
-                <button>+/-</button>
-                <button
+                  </button> */}
+              </div>
+              <div div className="card">
+                <TextButtons
+                  sx={{
+                    backgroundColor: "#F9F9F9",
+                    color: "#1B1B1B",
+                    fontWeight: "light",
+                    fontSize: 13,
+                    fontWeight: 450,
+                    boxShadow: "none",
+                    border: "2px solid #E6E6E6",
+                    "&:hover": {
+                      backgroundColor: "#E6E6E6",
+                    },
+                  }}
+                  onClick={() => handleclick("/")}
+                  label="+/-"
+                />
+                {/* <button>+/-</button> */}
+                <TextButtons
+                  sx={{
+                    backgroundColor: "#F9F9F9",
+                    color: "#1B1B1B",
+                    fontWeight: "light",
+                    fontSize: 13,
+                    fontWeight: 450,
+                    boxShadow: "none",
+                    border: "2px solid #E6E6E6",
+                    "&:hover": {
+                      backgroundColor: "#E6E6E6",
+                    },
+                  }}
+                  onClick={() => handleclick("0")}
+                  label="0"
+                />
+                {/* <button
                   className={`btn ${isPressed0 ? "active" : ""}`}
                   onClick={() => handleclick("0")}
                 >
                   0
-                </button>
-                <button value="." onClick={() => handleclick(".")}>
+                </button> */}
+                <TextButtons
+                  sx={{
+                    backgroundColor: "#F9F9F9",
+                    color: "#1B1B1B",
+                    fontWeight: "light",
+                    fontSize: 13,
+                    fontWeight: 450,
+                    boxShadow: "none",
+                    border: "2px solid #E6E6E6",
+                    "&:hover": {
+                      backgroundColor: "#E6E6E6",
+                    },
+                  }}
+                  onClick={() => handleclick(".")}
+                  label="."
+                />
+                {/* <button value="." onClick={() => handleclick(".")}>
                   .
-                </button>
-                <button
+                </button> */}
+                <TextButtons
+                  sx={{
+                    backgroundColor: "#F9F9F9",
+                    color: "#1B1B1B",
+                    fontWeight: "light",
+                    fontSize: 13,
+                    fontWeight: 450,
+                    boxShadow: "none",
+                    border: "2px solid #E6E6E6",
+                    "&:hover": {
+                      backgroundColor: "#E6E6E6",
+                    },
+                  }}
+                  onClick={() => handleclick("=")}
+                  label="="
+                />
+                {/* <button
                   className={`btn ${isPressedEqual ? "active" : ""}`}
                   onClick={() => handleclick("=")}
                 >
                   =
-                </button>
+                </button> */}
               </div>
             </div>
           </div>
